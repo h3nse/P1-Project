@@ -1,2 +1,4 @@
 # P1-Project
-Add p1 project description here
+
+#### Project members
+- Henrik F.B. Jensen
