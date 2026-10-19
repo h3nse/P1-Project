@@ -5,3 +5,4 @@
 - Jakob Haaning Andersen
 - Aske Bangsø Larsen
 - Frederik Østergård
+- Nicolas Gersvang Szilagyi
