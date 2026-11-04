@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "functions.h"
 
 int main(void)
 {
@@ -6,5 +7,9 @@ int main(void)
 
 
     printf("testing");
+
+    run_program();
+
     return 0;
 }
+
