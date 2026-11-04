@@ -6,3 +6,4 @@
 - Aske Bangsø Larsen
 - Frederik Østergård
 - Nicolas Gersvang Szilagyi
+- Gustav Klinge
