@@ -27,7 +27,7 @@ node_t* generate_graph(int amountOfNodes) {
             if (rand() % 3 == 0) { // Chooses to randomly skip some edges in the node.
                 continue;
             }
-            edge_t currentEdge = arrayOfNodes[i].edgesFromNodeArray[j]; // Simplifies.
+            edge_t currentEdge; // Simplifies, assigns a temporary edge.
 
             currentEdge.length = rand() % 6 + 1; // Accesses the length of the i'th nodes j'th edge.
             currentEdge.priority = rand() % 2 + 1;
@@ -37,6 +37,8 @@ node_t* generate_graph(int amountOfNodes) {
 
             printf("\nNode: %d, Edge: %d, Length: %d, Priority: %d, NodeA: %d, NodeB: %d, isCleared: %d\n",
                 i, j, currentEdge.length, currentEdge.priority, currentEdge.nodeA, currentEdge.nodeB, currentEdge.isCleared);
+
+            arrayOfNodes[i].edgesFromNodeArray[j] = currentEdge; // Assigns the current edge to the temporary current edge.
         }
     }
 
