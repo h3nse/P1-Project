@@ -32,7 +32,10 @@ void run_program() {
 node_t* generate_graph(int amountOfNodes) {
 
     node_t* arrayOfNodes = (node_t*)malloc(sizeof(node_t)*amountOfNodes);
-
+    if (arrayOfNodes == NULL) {
+        printf("Memory allocation failed! Not enough memory.");
+        exit(EXIT_FAILURE);
+    }
     for (int i = 0; i < amountOfNodes; i++) {
         for (int j = 0; j < MAX_EDGES_PER_NODE; j++) {
             if (rand() % 3 == 0) { // Chooses to randomly skip some edges in the node.
