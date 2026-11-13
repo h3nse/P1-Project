@@ -14,7 +14,11 @@ typedef struct node {
 } node_t;
 
 
-
+/* FROM MAINFUNCS.C */
 void run_program();
 
 node_t* generate_graph(int amountOfNodes);
+
+
+/* FROM CPP.C */
+void test_print();
