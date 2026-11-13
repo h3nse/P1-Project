@@ -1,17 +1,26 @@
 #include "functions.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
+// IMPORTANT FUNCTIONS NOT RELATED TO THE OTHER .C FILES
 
 void run_program() {
-    // INSERT ALL SORTS OF FUNCTIONS MY G
-    int amountOfNodes = 6; // debug
-    node_t* arrayOfNodes = generate_graph(amountOfNodes);
 
+    srand(time(NULL)); // Random seed based on computers time.
+
+    // INSERT ALL SORTS OF FUNCTIONS MY G
+
+    int amountOfNodes; // debug
+    printf("\nEnter the amount of nodes: ");
+    scanf("%d", &amountOfNodes);
+
+    node_t* arrayOfNodes = generate_graph(amountOfNodes);
 
     //printf("%d", arrayOfNodes[0].edgesFromNodeArray[0].length); // print test
 
     free(arrayOfNodes);
+
 }
 
 
@@ -21,7 +30,9 @@ void run_program() {
  * @return An array of nodes, whose fields are arrays of edges going from said nodes.
  */
 node_t* generate_graph(int amountOfNodes) {
+
     node_t* arrayOfNodes = (node_t*)malloc(sizeof(node_t)*amountOfNodes);
+
     for (int i = 0; i < amountOfNodes; i++) {
         for (int j = 0; j < MAX_EDGES_PER_NODE; j++) {
             if (rand() % 3 == 0) { // Chooses to randomly skip some edges in the node.
@@ -43,4 +54,5 @@ node_t* generate_graph(int amountOfNodes) {
     }
 
     return arrayOfNodes;
+
 }

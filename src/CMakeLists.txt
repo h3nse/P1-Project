@@ -1,5 +1,6 @@
 
-add_library(functions functions.c)
+add_library(functions mainfuncs.c
+        cpp.c)
 target_include_directories(functions PUBLIC .)
 
 add_executable(main main.c)
