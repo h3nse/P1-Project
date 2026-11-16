@@ -1,3 +1,7 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+
 #define MAX_EDGES_PER_NODE 4
 
 

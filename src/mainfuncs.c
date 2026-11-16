@@ -1,7 +1,5 @@
 #include "functions.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
+
 
 // IMPORTANT FUNCTIONS NOT RELATED TO THE OTHER .C FILES
 
