@@ -34,7 +34,7 @@ void run_program() {
  */
 node_t* generate_graph(int amountOfNodes) {
 
-    node_t* arrayOfNodes = (node_t*)calloc(amountOfNodes,sizeof(node_t));
+    node_t* arrayOfNodes = (node_t*)malloc(sizeof(node_t)*amountOfNodes);
     if (arrayOfNodes == NULL) {
         printf("Memory allocation failed! Not enough memory.");
         exit(EXIT_FAILURE);
