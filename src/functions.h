@@ -9,6 +9,12 @@ typedef struct edge {
     int nodeA; // The node the edge connects to or from.
     int nodeB; // -||-
     int length;
+
+    int isFeasible; // For Yaxiong 
+    int numberOfTraversals; // For Yaxiong; f(i, j)
+    int weight; // For Yaxiong; w(i, j)
+    int extraCost; // For Yaxiong R(i, j)
+    
     int priority; // Possibly irrelevant.
     int isCleared;
 } edge_t;
