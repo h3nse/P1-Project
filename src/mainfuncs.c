@@ -17,9 +17,12 @@ void run_program() {
 
     node_t* arrayOfNodes = generate_graph(amountOfNodes);
 
+    int* arrayOfIndexesOfOddNodes = odd_nodes_array(arrayOfNodes, amountOfNodes);
+
     //printf("%d", arrayOfNodes[0].edgesFromNodeArray[0].length); // print test
 
     free(arrayOfNodes);
+    free(arrayOfIndexesOfOddNodes);
 
 }
 
@@ -31,7 +34,7 @@ void run_program() {
  */
 node_t* generate_graph(int amountOfNodes) {
 
-    node_t* arrayOfNodes = (node_t*)malloc(sizeof(node_t)*amountOfNodes);
+    node_t* arrayOfNodes = (node_t*)calloc(amountOfNodes,sizeof(node_t));
     if (arrayOfNodes == NULL) {
         printf("Memory allocation failed! Not enough memory.");
         exit(EXIT_FAILURE);

@@ -1,4 +1,3 @@
-
 add_library(functions mainfuncs.c
         cpp.c)
 target_include_directories(functions PUBLIC .)
