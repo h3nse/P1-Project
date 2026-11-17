@@ -17,9 +17,12 @@ void run_program() {
 
     node_t* arrayOfNodes = generate_graph(amountOfNodes);
 
+    int* arrayOfIndexesOfOddNodes = odd_nodes_array(arrayOfNodes, amountOfNodes);
+
     //printf("%d", arrayOfNodes[0].edgesFromNodeArray[0].length); // print test
 
     free(arrayOfNodes);
+    free(arrayOfIndexesOfOddNodes);
 
 }
 
