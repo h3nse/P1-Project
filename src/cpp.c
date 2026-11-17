@@ -2,6 +2,10 @@
 
 // IN HERE WILL BE THE ALGORITHM FOR THE UNDIRECTED CHINESE POSTMAN PROBLEM
 
+
+
+
+
 // Step 1: find all odd nodes - this function goes through the array of all nodes, and check if each are an odd node.
 // The index of the node in the array of nodes will be placed in a new array if it is an odd node.
 int *odd_nodes_array(node_t *arrayOfNodes, int amountOfNodes) {
