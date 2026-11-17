@@ -39,7 +39,8 @@ node_t* generate_graph(int amountOfNodes) {
     }
     for (int i = 0; i < amountOfNodes; i++) {
         for (int j = 0; j < MAX_EDGES_PER_NODE; j++) {
-            if (rand() % 3 == 0) { // Chooses to randomly skip some edges in the node.
+            if (rand() % 3 <= 1 && j != 0) { // Chooses to randomly skip some edges in the node.
+                //arrayOfNodes[i].edgesFromNodeArray[j].length = 0; // Assigns a length of zero to signify, that this edge does not exist.
                 continue;
             }
             edge_t currentEdge; // Simplifies, assigns a temporary edge.

@@ -21,9 +21,10 @@ typedef struct node {
 /* FROM MAINFUNCS.C */
 void run_program();
 
+
 node_t* generate_graph(int amountOfNodes);
 
-int* odd_nodes_array (node_t* arrayOfNodes, int amountOfNodes);
+int* odd_nodes_array(node_t* arrayOfNodes, int amountOfNodes);
 
 /* FROM CPP.C */
 void test_print();
