@@ -6,8 +6,8 @@
 
 
 typedef struct edge {
-    int nodeA; // The node the edge connects to or from.
-    int nodeB; // -||-
+    node_t nodeA; // The node the edge connects to or from.
+    node_t nodeB; // -||-
     int length;
 
     int isFeasible; // For Yaxiong 
@@ -21,6 +21,7 @@ typedef struct edge {
 
 typedef struct node {
     edge_t edgesFromNodeArray[MAX_EDGES_PER_NODE]; // Array of edges going from a node.
+    int amountOfEdges;
 } node_t;
 
 
