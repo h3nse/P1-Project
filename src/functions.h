@@ -3,26 +3,32 @@
 #include <time.h>
 
 #define MAX_EDGES_PER_NODE 4
+typedef struct node node_t;
 
+typedef struct {
+    node_t *nodeA; // The node the edge connects to or from.
+    node_t *nodeB; // -||-
+    int length; // The constant length of a node
 
-typedef struct edge {
-    node_t nodeA; // The node the edge connects to or from.
-    node_t nodeB; // -||-
-    int length;
-
-    int isFeasible; // For Yaxiong 
-    int numberOfTraversals; // For Yaxiong; f(i, j)
-    int weight; // For Yaxiong; w(i, j)
-    int extraCost; // For Yaxiong R(i, j)
+    // For Yaxiong
+    int yaxIsFeasible;
+    int yaxNumberOfTraversals; // f(i, j)
+    int yaxWeight; // w(i, j)
+    int yaxExtraCost; // R(i, j)
     
     int priority; // Possibly irrelevant.
     int isCleared;
 } edge_t;
 
-typedef struct node {
+struct node{
+    int id;
     edge_t edgesFromNodeArray[MAX_EDGES_PER_NODE]; // Array of edges going from a node.
+    
     int amountOfEdges;
-} node_t;
+    // For Dijkstras
+    int distanceFromSrc;
+    node_t *parentNode;
+};
 
 
 /* FROM MAINFUNCS.C */
