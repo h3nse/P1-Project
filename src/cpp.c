@@ -21,7 +21,7 @@ int *odd_nodes_array(node_t *arrayOfNodes, int amountOfNodes) {
 
     for (int i = 0; i < amountOfNodes; i++) {
         for (int j = 0; j < MAX_EDGES_PER_NODE; j++) {
-            if (arrayOfNodes[i].edgesFromNodeArray[j].length == 0 && j % 2 == 0) {
+            if (arrayOfNodes[i].edgesFromNode[j].length == 0 && j % 2 == 0) {
                 arrayOfOddNodesIndexes[currentAmountOfOddNodes] = i;
                 currentAmountOfOddNodes++;
                 break;
