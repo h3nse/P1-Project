@@ -20,10 +20,10 @@ typedef struct {
     int isCleared;
 } edge_t;
 
-struct node{
+struct node {
     int id;
-    edge_t edgesFromNodeArray[MAX_EDGES_PER_NODE]; // Array of edges going from a node.
-    
+    edge_t edgesFromNode[MAX_EDGES_PER_NODE]; // Array of edges going from a node.
+    edge_t edgesToNode[MAX_EDGES_PER_NODE];
     int amountOfEdges;
     // For Dijkstras
     int distanceFromSrc;
