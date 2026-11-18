@@ -4,10 +4,11 @@
 
 #define MAX_EDGES_PER_NODE 4
 
+typedef struct node node_t;
 
-typedef struct edge {
-    node_t nodeA; // The node the edge connects to or from.
-    node_t nodeB; // -||-
+typedef struct {
+    node_t* nodeA; // The node the edge connects to or from.
+    node_t* nodeB; // -||-
     int length;
 
     int isFeasible; // For Yaxiong 
@@ -19,10 +20,11 @@ typedef struct edge {
     int isCleared;
 } edge_t;
 
-typedef struct node {
-    edge_t edgesFromNodeArray[MAX_EDGES_PER_NODE]; // Array of edges going from a node.
+struct node {
+    edge_t edgesFromNode[MAX_EDGES_PER_NODE]; // Array of edges going from a node.
+    edge_t edgesToNode[MAX_EDGES_PER_NODE];
     int amountOfEdges;
-} node_t;
+};
 
 
 /* FROM MAINFUNCS.C */
