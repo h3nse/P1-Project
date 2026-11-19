@@ -37,7 +37,60 @@ int *odd_nodes_array(node_t *arrayOfNodes, int amountOfNodes) {
     return arrayOfOddNodesIndexes;
 }
 
-int djikstra(node_t *arrayOfNodes, int amountOfNodes, node_t node1, node_t node2) {
+// Prototype
+int dijkstra(node_t *arrayOfNodes, int amountOfNodes, node_t srcNode, node_t destNode) {
+    // Create array of all unvisited nodes. +1 to allow space to remove nodes later.
+    node_t unvisitedNodes[amountOfNodes + 1];
+    int unvisitedNodesSize = amountOfNodes;
+    for (int i = 0; i < amountOfNodes; i++){
+        unvisitedNodes[i] = arrayOfNodes[i];
+    }
+    // Set length to all nodes to max
+    for (int i = 0; i < amountOfNodes ; i++){
+        arrayOfNodes[i].distanceFromSrc = 10000;
+    }
+
+    // srcNode setup
+    srcNode.distanceFromSrc = 0;
+    node_t currNode = srcNode;
+
+    int foundDest = 0;
+    while (unvisitedNodesSize != 0 && !foundDest){
+        // Get node with lowest distance from src.
+        int currNodeIndex;
+        for (int i = 0; i < unvisitedNodesSize; i++){
+            if (unvisitedNodes[i].distanceFromSrc < currNode.distanceFromSrc){
+                currNode = unvisitedNodes[i];
+                currNodeIndex = i;
+            }
+        }
+        if (currNode.id == destNode.id){
+            foundDest = 1;
+            break;
+        }
+
+        // Compare neighbouring nodes' distanceFromSrc to the current nodes' distance plus the length to the neighbour
+        // If new length is lower, update its distanceFromSrc and assign it currNode as parent
+        node_t *neighbourNode;
+        for (int i = 0; i < currNode.amountOfEdges; i++){
+            neighbourNode = currNode.edgesFromNode[i].nodeB;
+            int distanceThroughCurrNode = currNode.distanceFromSrc + currNode.edgesFromNode[i].length;
+            if (neighbourNode->distanceFromSrc > distanceThroughCurrNode){
+                neighbourNode->distanceFromSrc = distanceThroughCurrNode;
+                neighbourNode->parentNode = &currNode;
+            }
+        }
+
+        // Remove currNode from unvisitedNodes
+        for (int i = currNodeIndex; i < unvisitedNodesSize; i++){
+            unvisitedNodes[i] = unvisitedNodes[i + 1];
+        }
+        unvisitedNodesSize--;
+    }
+
+    // If destination was found, the path can now be traced by going through the parents of each node, starting at dest.
+
+    return foundDest;
 
 }
 
