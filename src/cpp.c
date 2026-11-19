@@ -41,6 +41,8 @@ int *odd_nodes_array(node_t *arrayOfNodes, int amountOfNodes) {
 int dijkstra(node_t *arrayOfNodes, int amountOfNodes, node_t srcNode, node_t destNode) {
     // Create array of all unvisited nodes. +1 to allow space to remove nodes later.
     node_t unvisitedNodes[amountOfNodes + 1];
+    node_t tempNode;
+    unvisitedNodes[amountOfNodes + 1] = tempNode;
     int unvisitedNodesSize = amountOfNodes;
     for (int i = 0; i < amountOfNodes; i++){
         unvisitedNodes[i] = arrayOfNodes[i];
@@ -53,11 +55,16 @@ int dijkstra(node_t *arrayOfNodes, int amountOfNodes, node_t srcNode, node_t des
     // srcNode setup
     srcNode.distanceFromSrc = 0;
     node_t currNode = srcNode;
+    int currNodeIndex;
+    for (int i = 0; i < amountOfNodes; i++){
+        if (unvisitedNodes[i].id == currNode.id){
+            currNodeIndex = i;
+        }
+    }
 
     int foundDest = 0;
     while (unvisitedNodesSize != 0 && !foundDest){
         // Get node with lowest distance from src.
-        int currNodeIndex;
         for (int i = 0; i < unvisitedNodesSize; i++){
             if (unvisitedNodes[i].distanceFromSrc < currNode.distanceFromSrc){
                 currNode = unvisitedNodes[i];
