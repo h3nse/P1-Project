@@ -111,7 +111,7 @@ int cpp_total_length(node_t *arrayOfNodes, int amountOfNodes, int *arrayOfOddNod
             if (i == j) {
                 continue;
             }
-            currentOddNodePath = djikstra(arrayOfNodes, amountOfNodes, arrayOfNodes[arrayOfOddNodesIndexes[i]], arrayOfNodes[arrayOfOddNodesIndexes[j]]);
+            currentOddNodePath = dijkstra(arrayOfNodes, amountOfNodes, arrayOfNodes[arrayOfOddNodesIndexes[i]], arrayOfNodes[arrayOfOddNodesIndexes[j]]);
             if (currentOddNodePath < shortestOddNodePath) {
                 shortestOddNodePath = currentOddNodePath;
             }
