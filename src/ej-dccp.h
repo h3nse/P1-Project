@@ -6,7 +6,7 @@
 #define P1_EJ_DCCP_H
 #include "functions.h"
 
-void ej_dccp_main(node_t *graph, int amountOfNodes);
+void ej_dcpp_main(node_t *graph, int amountOfNodes);
 int symmetric_graph_check(node_t *graph);
 char* eulerian_tour(node_t *graph);
 void print_eulerian_tour(char* eulerianTour);
