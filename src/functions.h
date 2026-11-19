@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 
-#define MAX_EDGES_PER_NODE 4
+#define MAX_EDGES_PER_NODE 100
 
 
 typedef struct edge {

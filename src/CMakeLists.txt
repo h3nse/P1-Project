@@ -8,3 +8,4 @@ add_executable(main main.c
         cpp.c)
 target_link_libraries(main functions)
 
+add_executable(test_graphGenerator graphGenerator.c)

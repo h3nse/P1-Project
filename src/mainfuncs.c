@@ -1,5 +1,4 @@
-#include "functions.h"
-
+#include "graphGenerator.h"
 
 // IMPORTANT FUNCTIONS NOT RELATED TO THE OTHER .C FILES
 
@@ -13,7 +12,7 @@ void run_program() {
     printf("\nEnter the amount of nodes: ");
     scanf("%d", &amountOfNodes);
 
-    node_t* arrayOfNodes = generate_graph(amountOfNodes);
+    node_t* arrayOfNodes = spanning_tree(amountOfNodes);
 
     int* arrayOfIndexesOfOddNodes = odd_nodes_array(arrayOfNodes, amountOfNodes);
 
@@ -61,3 +60,9 @@ node_t* generate_graph(int amountOfNodes) {
     return arrayOfNodes;
 
 }
+
+
+
+
+
+
