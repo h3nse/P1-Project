@@ -1,8 +1,5 @@
-add_library(functions mainfuncs.c
+add_library(functions project.c
         cpp.c
-        cpp.c
-        cpp.c
-        cpp.h
         ej-dcpp.c)
 target_include_directories(functions PUBLIC .)
 

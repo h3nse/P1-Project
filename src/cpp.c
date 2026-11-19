@@ -1,4 +1,4 @@
-#include "functions.h"
+#include "project.h"
 #include "limits.h"
 
 // IN HERE WILL BE THE ALGORITHM FOR THE UNDIRECTED CHINESE POSTMAN PROBLEM
