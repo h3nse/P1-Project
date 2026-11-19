@@ -1,6 +1,5 @@
 #include "project.h"
 
-
 // IMPORTANT FUNCTIONS NOT RELATED TO THE OTHER .C FILES
 
 void run_program() {
