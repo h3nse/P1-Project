@@ -51,7 +51,7 @@ int dijkstra(node_t *arrayOfNodes, int amountOfNodes, node_t srcNode, node_t des
     }
     // Set length to all nodes to max
     for (int i = 0; i < amountOfNodes ; i++){
-        arrayOfNodes[i].distanceFromSrc = 10000;
+        unvisitedNodes[i].distanceFromSrc = INT_MAX;
     }
 
     // srcNode setup
