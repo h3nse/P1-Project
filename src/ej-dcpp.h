@@ -4,7 +4,7 @@
 
 #ifndef P1_EJ_DCCP_H
 #define P1_EJ_DCCP_H
-#include "functions.h"
+#include "project.h"
 
 void ej_dcpp_main(node_t *graph, int amountOfNodes);
 int symmetric_digraph_check(node_t *graph);
