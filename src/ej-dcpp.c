@@ -1,4 +1,4 @@
-#include "ej-dccp.h"
+#include "ej-dcpp.h"
 
 void ej_dcpp_main(node_t *graph, int amountOfNodes) {
     //Main help functions: Symmetric graph check, eulerian tour generator (algorithm 4.3.3 on page 242), in-out-degree calculate function, circulation problem, arc add to new graph
@@ -39,7 +39,7 @@ char* eulerian_tour(node_t *eulerianDigraph, int amountOfNodes) {
 
     // Generate intree
     for (int i = 0; i < amountOfNodes; i++) {
-        
+
     }
 
     // For loop that labels each vertex w in the graph consecutively following this rule:
