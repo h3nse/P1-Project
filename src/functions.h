@@ -24,6 +24,7 @@ struct node {
     int id;
     edge_t edgesFromNode[MAX_EDGES_PER_NODE]; // Array of edges going from a node.
     edge_t edgesToNode[MAX_EDGES_PER_NODE];
+    int balanced; // Used for Edmonds' and johnson's dcpp
     int amountOfEdges;
     // For Dijkstras
     int distanceFromSrc;
