@@ -53,7 +53,7 @@ node_t* generate_graph(int amountOfNodes) {
             printf("\nNode: %d, Edge: %d, Length: %d, Priority: %d, NodeA: %d, NodeB: %d, isCleared: %d\n",
                 i, j, currentEdge.length, currentEdge.priority, currentEdge.nodeA, currentEdge.nodeB, currentEdge.isCleared);
 
-            arrayOfNodes[i].edgesFromNodeArray[j] = currentEdge; // Assigns the current edge to the temporary current edge.
+            arrayOfNodes[i].edgesFromNode[j] = currentEdge; // Assigns the current edge to the temporary current edge.
         }
     }
 
