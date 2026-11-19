@@ -1,6 +1,6 @@
 #include "ej-dccp.h"
 
-void ej_dccp_main(node_t *graph, int amountOfNodes) {
+void ej_dcpp_main(node_t *graph, int amountOfNodes) {
     //Main help functions: Symmetric graph check, eulerian tour generator (algorithm 4.3.3 on page 242), in-out-degree calculate function, circulation problem, arc add to new graph
 
     //Step by step guide
