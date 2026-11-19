@@ -21,14 +21,13 @@ typedef struct {
 } edge_t;
 
 struct node {
-    int id;
     edge_t edgesFromNode[MAX_EDGES_PER_NODE]; // Array of edges going from a node.
     edge_t edgesToNode[MAX_EDGES_PER_NODE];
+    node_t *parentNode; // For Dijkstras
+    int id;
     int balanced; // Used for Edmonds' and johnson's dcpp
     int amountOfEdges;
-    // For Dijkstras
-    int distanceFromSrc;
-    node_t *parentNode;
+    int distanceFromSrc; // For Dijkstras
 };
 
 
