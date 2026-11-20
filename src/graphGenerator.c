@@ -144,6 +144,8 @@ void add_edge(int fromNode, int toNode, node_t* graph) {
 
     graph[fromNode].edgesFromNode[get_free_from_slot(graph[fromNode])] = currentEdge;
     graph[toNode].edgesToNode[get_free_to_slot(graph[toNode])] = currentEdge;
+    graph[fromNode].amountOfEdgesFromNode++;
+    graph[toNode].amountOfEdgesToNode++;
 
     graph[fromNode].id = fromNode; //set id for later use
     graph[toNode].id = toNode; //set id for later use

@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 
 #define MAX_EDGES_PER_NODE 4
 typedef struct node node_t;
@@ -19,6 +20,7 @@ typedef struct {
     int yaxWeight; // w(i, j)
     int yaxExtraCost; // R(i, j)
     int inTreeLabels; // Used for eulerian tour
+    int usedInIntree; // Used to label the tour
 
     int priority; // Possibly irrelevant.
     int isCleared; // Very possibly irrelevant
