@@ -9,6 +9,7 @@
 void ej_dcpp_main(node_t *graph, int amountOfNodes);
 int symmetric_digraph_check(node_t *graph);
 char* eulerian_tour(node_t *eulerianDigraph, int amountOfNodes);
+void recursive_intree_constructor(node_t vertexParent);
 void print_eulerian_tour(char* eulerianTour);
 void balance_calculation(node_t *graph, int amountOfNodes);
 node_t* circulation_problem(node_t *graph);
