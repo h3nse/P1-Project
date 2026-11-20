@@ -1,11 +1,15 @@
+#ifndef P1_PROJECT_H
+#define P1_PROJECT_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
 
+
 #define MAX_EDGES_PER_NODE 4
 typedef struct node node_t;
 
-typedef struct {
+typedef struct edge_t {
     node_t *nodeFrom; // The node the edge connects to or from.
     node_t *nodeTo; // -||-
     int length; // The constant length of a node
@@ -45,3 +49,5 @@ int* odd_nodes_array(node_t* arrayOfNodes, int amountOfNodes);
 
 /* FROM CPP.C */
 void test_print();
+
+#endif // P1_PROJECT_H
