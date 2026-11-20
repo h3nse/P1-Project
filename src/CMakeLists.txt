@@ -1,5 +1,6 @@
 add_library(project STATIC
         project.c
+        graphGenerator.c
         cpp.c
         ej-dcpp.c)
 
