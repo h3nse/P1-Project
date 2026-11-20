@@ -5,7 +5,7 @@
 #ifndef P1_GRAPHGENERATOR_H
 #define P1_GRAPHGENERATOR_H
 
-#include "functions.h"
+#include "project.h"
 #include <math.h>
 
 void testing_algorithms();
