@@ -1,5 +1,5 @@
-#include "graphGenerator.h"
 #include "project.h"
+#include "graphGenerator.h"
 
 // IMPORTANT FUNCTIONS NOT RELATED TO THE OTHER .C FILES
 
@@ -8,6 +8,8 @@ void run_program() {
     srand(time(NULL)); // Random seed based on computers time.
 
     // INSERT ALL SORTS OF FUNCTIONS MY G
+
+
 
     int amountOfNodes; // debug
     printf("\nEnter the amount of nodes: ");
