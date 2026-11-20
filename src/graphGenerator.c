@@ -48,7 +48,7 @@ void spanning_tree(node_t* graph,int amountOfNodes) {
 
     for (int i = 1; i < amountOfNodes; i++) { // loop through all nodes and add them to a previous nodes to ensure that all nodes are connected
 
-        graph[i].id = i; //set id for later use
+
 
         //see if node has a free slot
         int connect_from;
@@ -144,6 +144,9 @@ void add_edge(int fromNode, int toNode, node_t* graph) {
 
     graph[fromNode].edgesFromNode[get_free_from_slot(graph[fromNode])] = currentEdge;
     graph[toNode].edgesToNode[get_free_to_slot(graph[toNode])] = currentEdge;
+
+    graph[fromNode].id = fromNode; //set id for later use
+    graph[toNode].id = toNode; //set id for later use
 
     //print for test
     //printf("\nNodeFrom: %d, NodeTo: %d, Length: %d, Priority: %d, isCleared: %d\n",

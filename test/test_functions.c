@@ -9,7 +9,9 @@ void test_graph_generation();
 
 int main(void)
 {
+    //test procedural generation
     test_graph_generation();
+    generate_strongly_connected(100,500);
 
 
     // Test Dijkstras
@@ -18,6 +20,7 @@ int main(void)
     node_t srcNode = nodeGraph[0];
     node_t destNode = nodeGraph[amountOfNodes-1];
     dijkstra(nodeGraph, amountOfNodes, srcNode, destNode);
+
     return 0;
 }
 
@@ -41,14 +44,6 @@ node_t* test_graph() {
     add_edge(5,4,graph);
     add_edge(4,5,graph);
     add_edge(4,2,graph);
-
-    graph[0].id = 0;
-    graph[1].id = 1;
-    graph[2].id = 2;
-    graph[3].id = 3;
-    graph[4].id = 4;
-    graph[5].id = 5;
-    graph[6].id = 6;
 
     return graph;
 }
