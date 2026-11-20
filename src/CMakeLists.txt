@@ -1,13 +1,11 @@
-add_library(functions mainfuncs.c
+add_library(project STATIC
+        project.c
         cpp.c
-        cpp.c
-        cpp.c
-        cpp.h
         ej-dcpp.c)
-target_include_directories(functions PUBLIC .)
 
-add_executable(main main.c
-        cpp.c)
-add_executable(ej-dccp ej-dcpp.c
-        ej-dcpp.h)
-target_link_libraries(main functions)
+target_include_directories(project PUBLIC .)
+
+add_executable(main main.c)
+
+target_link_libraries(main PRIVATE project)
+
