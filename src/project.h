@@ -1,13 +1,17 @@
+#ifndef P1_PROJECT_H
+#define P1_PROJECT_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+
 
 #define MAX_EDGES_PER_NODE 4
 typedef struct node node_t;
 
 typedef struct {
-    node_t *nodeA; // The node the edge connects to or from.
-    node_t *nodeB; // -||-
+    node_t *nodeFrom; // The node the edge connects to or from.
+    node_t *nodeTo; // -||-
     int length; // The constant length of a node
 
     // For Yaxiong
@@ -16,7 +20,7 @@ typedef struct {
     int yaxWeight; // w(i, j)
     int yaxExtraCost; // R(i, j)
     int inTreeLabels; // Used for eulerian tour
-    
+
     int priority; // Possibly irrelevant.
     int isCleared; // Very possibly irrelevant
 } edge_t;
@@ -37,6 +41,10 @@ struct node {
 /* FROM MAINFUNCS.C */
 void run_program();
 
+int get_free_to_slot(node_t access_node );
+
+int get_free_to_slot(node_t access_node );
+
 
 node_t* generate_graph(int amountOfNodes);
 
@@ -44,3 +52,5 @@ int* odd_nodes_array(node_t* arrayOfNodes, int amountOfNodes);
 
 /* FROM CPP.C */
 void test_print();
+
+#endif // P1_PROJECT_H
