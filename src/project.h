@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <time.h>
 
+#ifndef P1_project_H
+#define P1_project_H
+
 #define MAX_EDGES_PER_NODE 4
 typedef struct node node_t;
 
@@ -34,14 +37,11 @@ struct node {
 /* FROM MAINFUNCS.C */
 void run_program();
 
-int get_free_to_slot(node_t access_node );
-
-int get_free_to_slot(node_t access_node );
-
-
-node_t* generate_graph(int amountOfNodes);
+//node_t* generate_graph(int amountOfNodes);
 
 int* odd_nodes_array(node_t* arrayOfNodes, int amountOfNodes);
 
 /* FROM CPP.C */
 void test_print();
+
+#endif

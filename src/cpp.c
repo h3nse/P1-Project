@@ -83,7 +83,7 @@ int dijkstra(node_t *arrayOfNodes, int amountOfNodes, node_t srcNode, node_t des
         // If new length is lower, update its distanceFromSrc and assign it currNode as parent
         node_t *neighbourNode;
         for (int i = 0; i < currNode.amountOfEdges; i++){
-            neighbourNode = currNode.edgesFromNode[i].nodeB;
+            neighbourNode = currNode.edgesFromNode[i].nodeTo;
             int distanceThroughCurrNode = currNode.distanceFromSrc + currNode.edgesFromNode[i].length;
             if (neighbourNode->distanceFromSrc > distanceThroughCurrNode){
                 neighbourNode->distanceFromSrc = distanceThroughCurrNode;
