@@ -11,5 +11,3 @@ add_executable(main main.c
 add_executable(ej-dccp ej-dcpp.c
         ej-dcpp.h)
 target_link_libraries(main functions)
-
-add_executable(test_graphGenerator graphGenerator.c)
