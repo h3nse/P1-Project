@@ -11,8 +11,21 @@ int yaxiong(node_t *arrayOfNodes, edge_t *arrayOfEdges, int amountOfNodes, int a
         arrayOfEdges[i].yaxWeight = 0;
     }
     for (int i = 0; i < amountOfNodes; i++){
-        
+        arrayOfNodes[i].yaxNodePotential = 0;
     }
+
+    while (1){
+        // Check edge feasibility, if all are feasaible, the optimal network is found
+        for (int i = 0; i < amountOfEdges; i++){
+            if (arrayOfEdges[i].yaxIsFeasible){
+                break;
+            }
+        }
+
+
+        // Do a bunch more stuff but im confused now...
+    }
+
 }
 
 
@@ -52,8 +65,14 @@ int *odd_nodes_array(node_t *arrayOfNodes, int amountOfNodes) {
 int dijkstra(node_t *arrayOfNodes, int amountOfNodes, node_t srcNode, node_t destNode) {
     // Create array of all unvisited nodes. +1 to allow space to remove nodes later.
     node_t *unvisitedNodes = (node_t *) malloc(sizeof(node_t) * amountOfNodes);
+    if (unvisitedNodes == NULL) {
+        printf("Memory allocation failed! Not enough memory.");
+        exit(EXIT_FAILURE);
+    }
+
     node_t tempNode;
     unvisitedNodes[amountOfNodes + 1] = tempNode;
+
     int unvisitedNodesSize = amountOfNodes;
     for (int i = 0; i < amountOfNodes; i++){
         unvisitedNodes[i] = arrayOfNodes[i];

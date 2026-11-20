@@ -9,7 +9,7 @@
 #define MAX_EDGES_PER_NODE 4
 typedef struct node node_t;
 
-typedef struct edge_t {
+typedef struct {
     node_t *nodeFrom; // The node the edge connects to or from.
     node_t *nodeTo; // -||-
     int length; // The constant length of a node
@@ -32,6 +32,7 @@ struct node {
     int balanced; // Used for Edmonds' and johnson's dcpp
     int amountOfEdges;
     int distanceFromSrc; // For Dijkstras
+    int yaxNodePotential // p(i) for Yaxiong
 };
 
 
