@@ -12,6 +12,10 @@ void testing_algorithms();
 
 node_t* generate_strongly_connected(int amount_of_nodes, int minimum_amount_of_edges);
 
+int get_free_from_slot(node_t access_node );
+
+int get_free_to_slot(node_t access_node );
+
 void spanning_tree(node_t* array_of_nodes,int amount_of_nodes);
 
 void add_edge(int nodeA, int nodeB, node_t* graph);
