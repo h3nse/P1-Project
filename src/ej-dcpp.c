@@ -28,30 +28,43 @@ int symmetric_digraph_check(node_t *graph) {
 char* eulerian_tour(node_t *eulerianDigraph, int amountOfNodes) {
     srand(time(NULL));
 
-    node_t *intree = malloc(sizeof(node_t) * amountOfNodes);
-    if (intree == NULL) {
-        printf("Not enough memory for Intree generation!");
-        exit(EXIT_FAILURE);
-    }
+    // Might not be used
+    // node_t *intree = malloc(sizeof(node_t) * amountOfNodes);
+    // if (intree == NULL) {
+    //     printf("Not enough memory for intree generation!");
+    //     exit(EXIT_FAILURE);
+    // }
 
     char *eulerianTour;
-    node_t vStart = eulerianDigraph[rand()%amountOfNodes]; // Chooses an arbitrary vertex to start intree from
+    node_t vertexStart = eulerianDigraph[rand()%amountOfNodes]; // Chooses an arbitrary vertex to start intree from
 
     // Generate intree
-    for (int i = 0; i < amountOfNodes; i++) {
-
-    }
+    recursive_intree_constructor(vertexStart);
 
     // For loop that labels each vertex w in the graph consecutively following this rule:
     // Label all out-arcs from w in the graph consecutively. This can be done at random: 1, 2, 3...
     // The largest label number must be placed at the arc used in the intree
-    // Lastly label the out arcs from vStart randomly and consecutively: 1, 2, 3...
+    // Lastly label the out arcs from vertexStart randomly and consecutively: 1, 2, 3...
 
 
-    // Trace the eulerian tour
+    // Trace the eulerian tour starting at vertexStart
 
-    free(intree);
+    //free(intree); Might not be used
     return eulerianTour;
+}
+
+void recursive_intree_constructor(node_t vertexParent) {
+    for (int i = 0; i < vertexParent.amountOfEdgesToNode; i++) {
+        node_t *currentVertexChild = vertexParent.edgesToNode[i].nodeA;
+        if (currentVertexChild->isUsed) {
+            continue;
+        }
+        else {
+            currentVertexChild->parentNode = &vertexParent;
+            currentVertexChild->isUsed = 1;
+            recursive_intree_constructor(*currentVertexChild);
+        }
+    }
 }
 
 // Used to print the final eulerian tour - to show the path found
