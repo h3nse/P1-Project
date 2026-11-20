@@ -1,4 +1,4 @@
-add_library(project STATIC 
+add_library(project STATIC
         project.c
         cpp.c
         ej-dcpp.c)

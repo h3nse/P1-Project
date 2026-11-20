@@ -6,8 +6,8 @@
 typedef struct node node_t;
 
 typedef struct {
-    node_t *nodeA; // The node the edge connects to or from.
-    node_t *nodeB; // -||-
+    node_t *nodeFrom; // The node the edge connects to or from.
+    node_t *nodeTo; // -||-
     int length; // The constant length of a node
 
     // For Yaxiong
@@ -15,7 +15,7 @@ typedef struct {
     int yaxNumberOfTraversals; // f(i, j)
     int yaxWeight; // w(i, j)
     int yaxExtraCost; // R(i, j)
-    
+
     int priority; // Possibly irrelevant.
     int isCleared;
 } edge_t;
@@ -33,6 +33,10 @@ struct node {
 
 /* FROM MAINFUNCS.C */
 void run_program();
+
+int get_free_to_slot(node_t access_node );
+
+int get_free_to_slot(node_t access_node );
 
 
 node_t* generate_graph(int amountOfNodes);
