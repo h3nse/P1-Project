@@ -28,7 +28,8 @@ struct node {
     int isUsed; // Used for eulerian tour intree
     int id;
     int balanced; // Used for Edmonds' and johnson's dcpp
-    int amountOfEdges;
+    int amountOfEdgesFromNode;
+    int amountOfEdgesToNode; // Used in eulerian tour intree
     int distanceFromSrc; // For Dijkstras
 };
 
