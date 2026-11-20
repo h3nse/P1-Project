@@ -20,6 +20,7 @@ typedef struct {
     int yaxWeight; // w(i, j)
     int yaxExtraCost; // R(i, j)
     int inTreeLabels; // Used for eulerian tour
+    int usedInIntree; // Used to label the tour
 
     int priority; // Possibly irrelevant.
     int isCleared; // Very possibly irrelevant
