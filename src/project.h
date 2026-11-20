@@ -41,12 +41,7 @@ struct node {
 /* FROM MAINFUNCS.C */
 void run_program();
 
-int get_free_to_slot(node_t access_node );
-
-int get_free_to_slot(node_t access_node );
-
-
-node_t* generate_graph(int amountOfNodes);
+//node_t* generate_graph(int amountOfNodes);
 
 int* odd_nodes_array(node_t* arrayOfNodes, int amountOfNodes);
 
