@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-
+#include <string.h>
 
 #define MAX_EDGES_PER_NODE 4
 typedef struct node node_t;
