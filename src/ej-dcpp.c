@@ -55,7 +55,7 @@ char* eulerian_tour(node_t *eulerianDigraph, int amountOfNodes) {
 
 void recursive_intree_constructor(node_t vertexParent) {
     for (int i = 0; i < vertexParent.amountOfEdgesToNode; i++) {
-        node_t *currentVertexChild = vertexParent.edgesToNode[i].nodeA;
+        node_t *currentVertexChild = vertexParent.edgesToNode[i].nodeFrom;
         if (currentVertexChild->isUsed) {
             continue;
         }

@@ -1,17 +1,32 @@
 #include <assert.h>
+
+#define node_t NODE_CONFLICT
+#define edge_t EDGE_CONFLICT
+
+#include <gvc.h>
+
+#undef node_t
+#undef edge_t
+
 #include "project.h"
 #include "cpp.h"
 #include "graphGenerator.h"
 
+void show_graph(char* file_name, node_t* graph, int amountOfNodes);
+
 node_t* test_graph();
 void test_graph_generation();
 
-
 int main(void)
 {
+
     //test procedural generation
     test_graph_generation();
-    generate_strongly_connected(100,500);
+    node_t* graph = generate_strongly_connected(1000,500);
+
+    //test visualization
+
+    show_graph("test",graph,1000);
 
 
     // Test Dijkstras
@@ -57,3 +72,45 @@ void test_graph_generation() {
     run_Tarjans_algorithm(graph,7);
 }
 
+void show_graph(char* file_name, node_t* graph, int amountOfNodes){
+    printf("HELP MEEEE");
+
+    GVC_t *gvc = gvContext();
+    FILE* output_file = fopen(file_name,"w");
+
+    Agraph_t *g = agopen("g",Agdirected,NULL);
+
+    char node1Name[10];
+    char node2Name[10];
+
+
+    for (int i = 0; i < amountOfNodes;i++) {
+
+        sprintf(node1Name,"%d",i);
+
+        Agnode_t* node1 = agnode(g,node1Name,1);
+
+        for (int j = 0; j < MAX_EDGES_PER_NODE; j++) {
+
+
+            int id = graph[i].edgesFromNode[j].nodeTo->id;
+            sprintf(node2Name,"%d",id);
+
+            Agnode_t* node2 = agnode(g,node2Name,1);
+
+            /*
+             *if(id < i)
+             */
+
+            agedge(g,node1,node2,0,1);
+
+        }
+    }
+
+
+    gvLayout(gvc,g,"dot");
+    gvRender(gvc,g,"dot",output_file);
+    gvFreeLayout(gvc,g);
+    agclose(g);
+
+}
