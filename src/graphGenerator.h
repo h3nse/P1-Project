@@ -8,26 +8,25 @@
 #include "project.h"
 #include <math.h>
 
-void testing_algorithms();
+node_t* generate_strongly_connected(int amountOfNodes, int addExtraEdges);
 
-node_t* generate_strongly_connected(int amount_of_nodes, int minimum_amount_of_edges);
+int get_free_from_slot(node_t accessNode);
 
-int get_free_from_slot(node_t access_node );
+int get_free_to_slot(node_t accessNode);
 
-int get_free_to_slot(node_t access_node );
+void spanning_tree(node_t* arrayOfNodes,int amountOfNodes);
 
-void spanning_tree(node_t* array_of_nodes,int amount_of_nodes);
+void add_edge(int fromNode, int toNode, node_t* graph);
 
-void add_edge(int nodeA, int nodeB, node_t* graph);
+void add_random_edges(node_t* graph,int nodeCount, int amountOfEdges);
 
-void TarjansAlgorithm(node_t* graph,int* discovered,int* low,int* stack,int* stack_index,int* in_stack, int* start_time, int node);
+void TarjansAlgorithm(node_t* graph,int* discovered,int* low,int* stack,int* stack_index,int* inStack, int* start_time, int node);
 
-void run_Tarjans_algorithm(node_t* graph, int amount_of_nodes);
+void run_Tarjans_algorithm(node_t* graph, int amountOfNodes);
 
 void run_modified_Tarjans_algorithm(node_t* graph, int amount_of_nodes);
 
-void modified_TarjansAlgorithm(node_t* graph,int* discovered,int* low,int* stack,int* stack_index,int* in_stack, int* start_time, int node, int* inverse_discovered);
+void modified_TarjansAlgorithm(node_t* graph,int* discovered,int* inverseDiscovered,int* low, int* startTime, int node);
 
-void add_random_edges(node_t* graph,int node_count, int amount_of_edges, int required_amount_of_edges);
 
 #endif //P1_GRAPHGENERATOR_H
