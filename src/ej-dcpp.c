@@ -113,7 +113,7 @@ void recursive_intree_constructor(node_t* vertexParent) {
             currentVertexChild->parentNode = vertexParent;
             currentVertexChild->isUsed = 1;
             for (int j = 0; j < currentVertexChild->amountOfEdgesFromNode; j++) {
-                if (currentVertexChild->edgesFromNode[j].nodeTo == vertexParent && currentVertexChild->edgesFromNode[j].length == vertexParent->edgesToNode[j].length) {
+                if (currentVertexChild->edgesFromNode[j].nodeTo == vertexParent && currentVertexChild->edgesFromNode[j].length == vertexParent->edgesToNode[i].length) {
                     currentVertexChild->edgesFromNode[j].usedInIntree = 1;
                     break;
                 }
