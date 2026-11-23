@@ -11,6 +11,5 @@ target_include_directories(project PUBLIC .)
 
 add_executable(main main.c)
 
-target_link_libraries(main PRIVATE project )
-
+target_link_libraries(main PRIVATE project)
 
