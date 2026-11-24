@@ -12,13 +12,15 @@ typedef struct node node_t;
 typedef struct {
     node_t *nodeFrom; // The node the edge connects to or from.
     node_t *nodeTo; // -||-
+    edge_t residualArc; // For yaxiong
     int length; // The constant length of a node
 
     // For Yaxiong
     int yaxIsFeasible;
-    int yaxNumberOfTraversals; // f(i, j)
+    int yaxFlow; // f(i, j)
     int yaxWeight; // w(i, j)
-    int yaxExtraCost; // R(i, j)
+    int yaxArcDual; // R(i, j)
+    
     int inTreeLabels; // Used for eulerian tour
     int usedInIntree; // Used to label the tour
 
@@ -36,7 +38,7 @@ struct node {
     int amountOfEdgesFromNode;
     int amountOfEdgesToNode; // Used in eulerian tour intree
     int distanceFromSrc; // For Dijkstras
-    int yaxNodePotential // p(i) for Yaxiong
+    int yaxNodeDual // p(i) for Yaxiong
 };
 
 

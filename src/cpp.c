@@ -1,32 +1,9 @@
 #include "cpp.h"
-#include "limits.h"
+#include <limits.h>
 
 // IN HERE WILL BE THE ALGORITHM FOR THE UNDIRECTED CHINESE POSTMAN PROBLEM
 
-int yaxiong(node_t *arrayOfNodes, edge_t *arrayOfEdges, int amountOfNodes, int amountOfEdges){
-    // Set initial solution
-    for (int i = 0; i < amountOfEdges; i++){
-        arrayOfEdges[i].yaxNumberOfTraversals = 0;
-        arrayOfEdges[i].yaxExtraCost = arrayOfEdges[i].length;
-        arrayOfEdges[i].yaxWeight = 0;
-    }
-    for (int i = 0; i < amountOfNodes; i++){
-        arrayOfNodes[i].yaxNodePotential = 0;
-    }
 
-    while (1){
-        // Check edge feasibility, if all are feasaible, the optimal network is found
-        for (int i = 0; i < amountOfEdges; i++){
-            if (arrayOfEdges[i].yaxIsFeasible){
-                break;
-            }
-        }
-
-
-        // Do a bunch more stuff but im confused now...
-    }
-
-}
 
 
 
@@ -61,7 +38,6 @@ int *odd_nodes_array(node_t *arrayOfNodes, int amountOfNodes) {
     return arrayOfOddNodesIndexes;
 }
 
-// Prototype
 int dijkstra(node_t *arrayOfNodes, int amountOfNodes, node_t srcNode, node_t destNode) {
     // Create array of all unvisited nodes. +1 to allow space to remove nodes later.
     node_t *unvisitedNodes = (node_t *) malloc(sizeof(node_t) * amountOfNodes);
