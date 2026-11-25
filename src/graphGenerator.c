@@ -1,12 +1,7 @@
-//
-// Created by Frede on 18-11-2026.
-//
-
 #include "graphGenerator.h"
 
-node_t* generate_strongly_connected(int amountOfNodes, int addExtraEdges) {
-
-    node_t* graph = calloc(amountOfNodes,sizeof(node_t)); //initialize the array
+node_t *generate_strongly_connected(int amountOfNodes, int addExtraEdges) {
+    node_t *graph = calloc(amountOfNodes, sizeof(node_t)); //initialize the array
 
     if (graph == NULL) {
         printf("could not allocate room for nodes");
@@ -14,13 +9,13 @@ node_t* generate_strongly_connected(int amountOfNodes, int addExtraEdges) {
     }
 
     printf("creating spanning tree\n");
-    spanning_tree(graph,amountOfNodes);
+    spanning_tree(graph, amountOfNodes);
 
     //printf("finding scc\n");
     //run_Tarjans_algorithm(graph,amountOfNodes);
 
     printf("making strongly connected \n");
-    run_modified_Tarjans_algorithm(graph,amountOfNodes);
+    run_modified_Tarjans_algorithm(graph, amountOfNodes);
 
 
     //printf("testing strongly connected \n");
@@ -28,13 +23,12 @@ node_t* generate_strongly_connected(int amountOfNodes, int addExtraEdges) {
 
 
     printf("adding random edges \n");
-    add_random_edges(graph,amountOfNodes,addExtraEdges);
+    add_random_edges(graph, amountOfNodes, addExtraEdges);
 
     return graph;
 }
 
-void spanning_tree(node_t* graph,int amountOfNodes) {
-
+void spanning_tree(node_t *graph, int amountOfNodes) {
     /*
      * explanation
      * node 0 is base
@@ -45,31 +39,28 @@ void spanning_tree(node_t* graph,int amountOfNodes) {
 
     graph[0].id = 0; //sets the id of 0
 
-
-    for (int i = 1; i < amountOfNodes; i++) { // loop through all nodes and add them to a previous nodes to ensure that all nodes are connected
-
-
+    for (int i = 1; i < amountOfNodes; i++) {
+        // loop through all nodes and add them to a previous nodes to ensure that all nodes are connected
 
         //see if node has a free slot
         int connect_from;
         do {
             connect_from = rand() % i;
+        } while (graph[connect_from].edgesFromNode[MAX_EDGES_PER_NODE - 2].length != 0); //check if node has a free slot
 
-        }while (graph[connect_from].edgesFromNode[MAX_EDGES_PER_NODE-2].length != 0 ); //check if node has a free slot
 
-
-        if (i % 1000 == 0) { //test to see if running
-            printf("running %d \n", i );
+        if (i % 1000 == 0) {
+            //test to see if running
+            printf("running %d \n", i);
         }
 
         //add the edge from connect to the new node
-        add_edge(connect_from,i,graph);
-
+        add_edge(connect_from, i, graph);
     }
-
 }
 
-int get_free_from_slot(node_t accessNode ) { //gets the first free from slot in a node
+int get_free_from_slot(node_t accessNode) {
+    //gets the first free from slot in a node
     for (int i = 0; i < MAX_EDGES_PER_NODE; i++) {
         if (accessNode.edgesFromNode[i].length == 0) {
             return i;
@@ -79,7 +70,8 @@ int get_free_from_slot(node_t accessNode ) { //gets the first free from slot in 
     return -1;
 }
 
-int get_free_to_slot(node_t accessNode ) { //gets the first free to slot in a node
+int get_free_to_slot(node_t accessNode) {
+    //gets the first free to slot in a node
     for (int i = 0; i < MAX_EDGES_PER_NODE; i++) {
         if (accessNode.edgesToNode[i].length == 0) {
             return i;
@@ -87,26 +79,23 @@ int get_free_to_slot(node_t accessNode ) { //gets the first free to slot in a no
     }
 
     return -1;
-
 }
 
-void add_random_edges(node_t* graph,int nodeCount, int amountOfEdges) {
-
+void add_random_edges(node_t *graph, int nodeCount, int amountOfEdges) {
     int stopCounter = 0; // make sure an infinite loop doesn't happen
     int maxAttempts = 20;
 
-    int randomNode1,freeSlot1,randomNode2,freeSlot2;
+    int randomNode1, freeSlot1, randomNode2, freeSlot2;
 
     for (int i = 0; i < amountOfEdges; i++) {
-
-
         while (stopCounter < maxAttempts) {
             stopCounter++;
 
-            randomNode1 = rand()%nodeCount;
+            randomNode1 = rand() % nodeCount;
             freeSlot1 = get_free_from_slot(graph[randomNode1]);
 
-            if (freeSlot1 != -1) { //if there is a free from slot add edge from here
+            if (freeSlot1 != -1) {
+                //if there is a free from slot add edge from here
                 break;
             }
         }
@@ -116,23 +105,21 @@ void add_random_edges(node_t* graph,int nodeCount, int amountOfEdges) {
         while (stopCounter < maxAttempts) {
             stopCounter++;
 
-            randomNode2 = rand()%nodeCount;
+            randomNode2 = rand() % nodeCount;
             freeSlot2 = get_free_from_slot(graph[randomNode2]);
 
-            if (freeSlot2 != -1 && randomNode1 != randomNode2) { //if there is a free to slot add edge from here unless it tries adding to itself
+            if (freeSlot2 != -1 && randomNode1 != randomNode2) {
+                //if there is a free to slot add edge from here unless it tries adding to itself
                 break;
             }
         }
 
-        add_edge(randomNode1,randomNode2, graph); //add the found edge
+        add_edge(randomNode1, randomNode2, graph); //add the found edge
         stopCounter = 0; //reset
-
-
     }
-
 }
 
-void add_edge(int fromNode, int toNode, node_t* graph) {
+void add_edge(int fromNode, int toNode, node_t *graph) {
     edge_t currentEdge; // Simplifies, assigns a temporary edge.
 
     currentEdge.length = rand() % 6 + 1; // random length
@@ -152,17 +139,15 @@ void add_edge(int fromNode, int toNode, node_t* graph) {
 
     //print for test
     //printf("\nNodeFrom: %d, NodeTo: %d, Length: %d, Priority: %d, isCleared: %d\n",
-     //       fromNode,toNode, currentEdge.length, currentEdge.priority, currentEdge.isCleared);
-
+    //       fromNode,toNode, currentEdge.length, currentEdge.priority, currentEdge.isCleared);
 }
 
-void run_Tarjans_algorithm(node_t* graph, int amountOfNodes) {
-
+void run_Tarjans_algorithm(node_t *graph, int amountOfNodes) {
     //initialize all the arrays and add +1 to the length since C 0 is used as empty
-    int* discovered = calloc(amountOfNodes+1,sizeof(int));
-    int* low = calloc(amountOfNodes+1,sizeof(int));
-    int* stack = calloc(amountOfNodes+1,sizeof(int));
-    int* inStack = calloc(amountOfNodes+1,sizeof(int));
+    int *discovered = calloc(amountOfNodes + 1, sizeof(int));
+    int *low = calloc(amountOfNodes + 1, sizeof(int));
+    int *stack = calloc(amountOfNodes + 1, sizeof(int));
+    int *inStack = calloc(amountOfNodes + 1, sizeof(int));
 
 
     //same reason as +1 we start at 1 instead of 0
@@ -191,7 +176,7 @@ void run_Tarjans_algorithm(node_t* graph, int amountOfNodes) {
 
 
     //run algorithm
-    TarjansAlgorithm(graph,discovered,low,stack,&stackIndex,inStack,&startTime,0);
+    TarjansAlgorithm(graph, discovered, low, stack, &stackIndex, inStack, &startTime, 0);
 
 
     //remember to free
@@ -199,11 +184,10 @@ void run_Tarjans_algorithm(node_t* graph, int amountOfNodes) {
     free(low);
     free(stack);
     free(inStack);
-
 }
 
-void TarjansAlgorithm(node_t* graph,int* discovered,int* low,int* stack,int* stackIndex,int* inStack, int* startTime, int node) {
-
+void TarjansAlgorithm(node_t *graph, int *discovered, int *low, int *stack, int *stackIndex, int *inStack,
+                      int *startTime, int node) {
     //set each value for the node depending on what it is
     discovered[node] = (*startTime); //when the node is discovered
     low[node] = (*startTime); //originally set to the same as discovered but is changed later on
@@ -220,26 +204,24 @@ void TarjansAlgorithm(node_t* graph,int* discovered,int* low,int* stack,int* sta
         amountOfEdgesFromNode = MAX_EDGES_PER_NODE;
     }
 
-    for (int i = 0; i < amountOfEdgesFromNode; i++) { // get all nodes that can be accessed from the node
+    for (int i = 0; i < amountOfEdgesFromNode; i++) {
+        // get all nodes that can be accessed from the node
 
         int connectedNode = graph[node].edgesFromNode[i].nodeTo->id; //find the id of the next node
 
         if (discovered[connectedNode] == 0) {
             //repeats the previous steps for the next node until you've reached the end of a branch then run the rest
-            TarjansAlgorithm(graph,discovered,low,stack,stackIndex,inStack,startTime,connectedNode);
+            TarjansAlgorithm(graph, discovered, low, stack, stackIndex, inStack, startTime, connectedNode);
 
-            low[node] = fmin(low[node],low[connectedNode]); // update low value
+            low[node] = fmin(low[node], low[connectedNode]); // update low value
+        } else if (inStack[connectedNode]) {
+            low[node] = fmin(low[node], low[connectedNode]); // if not in a scc then update low value
         }
-        else if (inStack[connectedNode]) {
-            low[node] = fmin(low[node],low[connectedNode]); // if not in a scc then update low value
-        }
-
-
     }
 
 
-
-    if (low[node] == discovered[node]) {   //remove all nodes connected in the scc
+    if (low[node] == discovered[node]) {
+        //remove all nodes connected in the scc
 
 
         printf("these nodes are in a scc\n");
@@ -251,7 +233,7 @@ void TarjansAlgorithm(node_t* graph,int* discovered,int* low,int* stack,int* sta
 
             //get the node id
             int x = stack[*stackIndex];
-            printf("%d, ",x);
+            printf("%d, ", x);
 
             //pop from stack
             stack[*stackIndex] = 0;
@@ -263,19 +245,15 @@ void TarjansAlgorithm(node_t* graph,int* discovered,int* low,int* stack,int* sta
                 printf("\n");
                 break;
             }
-
-
         }
-
     }
-
 }
 
-void run_modified_Tarjans_algorithm(node_t* graph, int amount_of_nodes) {
+void run_modified_Tarjans_algorithm(node_t *graph, int amount_of_nodes) {
     //initialize arrays again
-    int* discovered = calloc(amount_of_nodes+1,sizeof(int));
-    int* inverseDiscovered = calloc(amount_of_nodes+1,sizeof(int));
-    int* low = calloc(amount_of_nodes+1,sizeof(int));
+    int *discovered = calloc(amount_of_nodes + 1, sizeof(int));
+    int *inverseDiscovered = calloc(amount_of_nodes + 1, sizeof(int));
+    int *low = calloc(amount_of_nodes + 1, sizeof(int));
 
     int start_time = 1;
 
@@ -294,15 +272,15 @@ void run_modified_Tarjans_algorithm(node_t* graph, int amount_of_nodes) {
         exit(EXIT_FAILURE);
     }
 
-    modified_TarjansAlgorithm(graph,discovered,inverseDiscovered,low,&start_time,0);
+    modified_TarjansAlgorithm(graph, discovered, inverseDiscovered, low, &start_time, 0);
 
     free(discovered);
     free(inverseDiscovered);
     free(low);
-
 }
 
-void modified_TarjansAlgorithm(node_t* graph,int* discovered,int* inverseDiscovered,int* low, int* startTime, int node) {
+void modified_TarjansAlgorithm(node_t *graph, int *discovered, int *inverseDiscovered, int *low, int *startTime,
+                               int node) {
     discovered[node] = (*startTime); //when the node is discovered
     low[node] = (*startTime); //originally set to the same as discovered but is changed later on
     inverseDiscovered[*startTime] = node; //flipped version of discovered
@@ -315,22 +293,23 @@ void modified_TarjansAlgorithm(node_t* graph,int* discovered,int* inverseDiscove
         amountOfEdgesFromNode = MAX_EDGES_PER_NODE;
     }
 
-    for (int i = 0; i < amountOfEdgesFromNode; i++) { // get all nodes that can be accessed from the node
+    for (int i = 0; i < amountOfEdgesFromNode; i++) {
+        // get all nodes that can be accessed from the node
 
         //just like regular Tarjans algorithm so see that
         int connectedNode = graph[node].edgesFromNode[i].nodeTo->id;
 
         if (discovered[connectedNode] == 0) {
-            modified_TarjansAlgorithm(graph,discovered,inverseDiscovered,low,startTime,connectedNode);
+            modified_TarjansAlgorithm(graph, discovered, inverseDiscovered, low, startTime, connectedNode);
         }
         //we want everything to be one strongly connected graph so no need for stacks anymore
-        low[node] = fmin(low[node],low[connectedNode]);
-
+        low[node] = fmin(low[node], low[connectedNode]);
     }
 
-    if (low[node] == discovered[node] && node != 0) { // if discovering a scc, 0 is excluded since we know we can go from 0 to anything
+    if (low[node] == discovered[node] && node != 0) {
+        // if discovering a scc, 0 is excluded since we know we can go from 0 to anything
 
-        int vNode,wNode,x,y; //setup
+        int vNode, wNode, x, y; //setup
 
 
         do {
@@ -338,7 +317,7 @@ void modified_TarjansAlgorithm(node_t* graph,int* discovered,int* inverseDiscove
 
             x = discovered[node] + random_value; // choose a value between [discovered[node], starttime]
 
-            y = (rand() % (discovered[node]-1))+1; //choose a value from [1,discovered[node]]
+            y = (rand() % (discovered[node] - 1)) + 1; //choose a value from [1,discovered[node]]
 
             //grab the nodes associated with the discovery value
             vNode = inverseDiscovered[x];
@@ -346,12 +325,9 @@ void modified_TarjansAlgorithm(node_t* graph,int* discovered,int* inverseDiscove
 
 
             //printf("stuck on %d \n", w_node); //test
-
         } while (get_free_from_slot(graph[vNode]) == -1 || get_free_to_slot(graph[wNode]) == -1);
 
-        add_edge(vNode,wNode,graph); // add the edge
+        add_edge(vNode, wNode, graph); // add the edge
         low[node] = y; //update low value to make it a part of that scc
-
     }
-
 }

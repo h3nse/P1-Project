@@ -1,7 +1,3 @@
-//
-// Created by Frede on 18-11-2026.
-//
-
 #ifndef P1_GRAPHGENERATOR_H
 #define P1_GRAPHGENERATOR_H
 

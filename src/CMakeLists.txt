@@ -3,7 +3,9 @@ add_library(project STATIC
         graphGenerator.c
         cpp.c
         graphGenerator.c
-        ej-dcpp.c)
+        ej-dcpp.c
+        gustavgraph.c
+)
 
 target_include_directories(project PUBLIC .)
 
