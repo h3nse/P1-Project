@@ -4,6 +4,7 @@ add_library(project STATIC
         cpp.c
         graphGenerator.c
         ej-dcpp.c
+        yaxiong.c
         gustavgraph.c
 )
 
