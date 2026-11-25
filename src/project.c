@@ -8,5 +8,5 @@ void run_program() {
     // INSERT ALL SORTS OF FUNCTIONS MY G
 
     // Can be used to test the current DCPP
-    // ej_dcpp_main(test_graph(), 7);
+    ej_dcpp_main(test_graph(), 7);
 }
