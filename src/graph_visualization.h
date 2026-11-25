@@ -10,9 +10,8 @@
 #define node_t NODE_CONFLICT
 #define edge_t EDGE_CONFLICT
 
-
-#include "cgraph.h"
-#include "gvc.h"
+#include <gvc.h>
+#include <cgraph.h>
 
 #undef node_t
 #undef edge_t

@@ -6,23 +6,22 @@ set(CMAKE_C_STANDARD 11)
 
 set(GRAPHVIZ_DIR "C:/Program Files/Graphviz")
 
-#find_library(GRAPHLIB graphlib PATHS "C:/Program Files/Graphviz")
 
-file(GLOB GVC_LIBS "${GRAPHVIZ_DIR}/lib/*.lib")
-include_directories("${GRAPHVIZ_DIR}/include/graphviz")
-link_directories("${GRAPHVIZ_DIR}/lib")
+find_path(GRAPHVIZ_INCLUDE_DIR NAMES gvc.h
+        HINTS "${GRAPHVIZ_DIR}/include/graphviz" "${GRAPHVIZ_DIR}/include"
+)
+find_library(GVC_LIB NAMES gvc libgvc
+        HINTS "${GRAPHVIZ_DIR}/lib"
+)
+find_library(CGRAPH_LIB NAMES cgraph libcgraph
+        HINTS "${GRAPHVIZ_DIR}/lib"
+)
 
-#find_package(graphviz QUIET)
-#include(FetchContent)
+include_directories(${GRAPHVIZ_INCLUDE_DIR})
 
-#fetchcontent_declare(
-#        graphviz
-#        GIT_REPOSITORY "https://gitlab.com/graphviz/graphviz.git"
-#        GIT_TAG "16.1.2"
-#        GIT_PROGRESS TRUE
-#)
-
-#fetchcontent_makeavailable(graphviz)
+#viewing pngs in clion
+find_package(PNG)
+include_directories(${PNG_INCLUDE_DIRS})
 
 
 add_subdirectory(src)

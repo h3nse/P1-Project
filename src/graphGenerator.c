@@ -48,8 +48,6 @@ void spanning_tree(node_t* graph,int amountOfNodes) {
 
     for (int i = 1; i < amountOfNodes; i++) { // loop through all nodes and add them to a previous nodes to ensure that all nodes are connected
 
-
-
         //see if node has a free slot
         int connect_from;
         do {
@@ -99,7 +97,6 @@ void add_random_edges(node_t* graph,int nodeCount, int amountOfEdges) {
 
     for (int i = 0; i < amountOfEdges; i++) {
 
-
         while (stopCounter < maxAttempts) {
             stopCounter++;
 
@@ -111,22 +108,24 @@ void add_random_edges(node_t* graph,int nodeCount, int amountOfEdges) {
             }
         }
 
-        stopCounter = 0;
 
         while (stopCounter < maxAttempts) {
             stopCounter++;
 
             randomNode2 = rand()%nodeCount;
-            freeSlot2 = get_free_from_slot(graph[randomNode2]);
+            freeSlot2 = get_free_to_slot(graph[randomNode2]);
 
             if (freeSlot2 != -1 && randomNode1 != randomNode2) { //if there is a free to slot add edge from here unless it tries adding to itself
+                add_edge(randomNode1,randomNode2, graph); //add the found edge
                 break;
             }
         }
 
-        add_edge(randomNode1,randomNode2, graph); //add the found edge
-        stopCounter = 0; //reset
+        if (stopCounter == maxAttempts) {
+            break;
+        }
 
+        stopCounter = 0; //reset
 
     }
 
