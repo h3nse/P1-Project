@@ -30,19 +30,9 @@ int yaxiong(node_t *arrayOfNodes, edge_t *arrayOfArcs, int amountOfNodes, int am
         // Run dijkstra's from the end node of the arc to the start node of the arc
         yaxDijkstra(arrayOfNodes, amountOfNodes, *currArc.nodeTo);
 
-        // Count amount of arcs on the path, along with the arc itself, i.e. count the arcs in the cycle
-        int count = 1;
-        node_t tempNode = *currArc.nodeFrom;
-        while (tempNode.id != currArc.nodeTo->id){
-            tempNode = *tempNode.parentNode;
-            count++;
-        }
+        // Assign flow to arcs in cycle according to their direction
 
-        // Make the cycle as an array
-        edge_t *cycle = (edge_t *)calloc(count, sizeof(edge_t));
-
-        // Find the arcs used in the cycle, if they're residual, decrease flow, if not, increase flow
-        
+        // Step 4: Update all arc values
         
         
         // Assign an unfeasible arc to currArc (Part of step 2)
